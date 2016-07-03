@@ -4,14 +4,16 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 cooking.set({
   entry: {
-    app: './src/main.js'
+    app: './example/main.js'
   },
   dist: './dist',
-  template: './src/index.tpl',
+  template: './example/index.tpl',
 
   devServer: {
     port: 8080,
-    publicPath: '/'
+    hostname: require('my-local-ip')(),
+    publicPath: '/',
+    log: false
   },
 
   // production
@@ -51,10 +53,10 @@ cooking.add('loader.less', {
   loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!less-loader')
 });
 
-cooking.add('loader.sass', {
-  test: /\.sass$/,
-  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!sass-loader')
-});
+// cooking.add('loader.sass', {
+//   test: /\.sass$/,
+//   loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader!sass-loader')
+// });
 
 cooking.add('loader.css', {
   test: /\.css$/,
@@ -64,7 +66,8 @@ cooking.add('loader.css', {
 cooking.add('plugin.ExtractText', new ExtractTextPlugin('[name].css'));
 
 cooking.add('resolve.alias', {
-  'src': path.join(__dirname, 'src')
+  'src': path.join(__dirname, 'src'),
+  'packages': path.join(__dirname, 'packages')
 });
 
 module.exports = cooking.resolve();
