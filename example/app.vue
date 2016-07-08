@@ -1,57 +1,18 @@
 <template>
-  <h1>vue-ant-ui</h1>
-  <p>Ant Design components for Vue</p>
-  <form action="">
-    <button-group>
-       <ant-button>Cancel</ant-button>
-       <ant-button type="primary">OK</ant-button>
-     </button-group>
-     <button-group>
-       <ant-button disabled>L</ant-button>
-       <ant-button disabled>M</ant-button>
-       <ant-button disabled>R</ant-button>
-     </button-group>
-     <button-group>
-       <ant-button type="primary">L</ant-button>
-       <ant-button>M</ant-button>
-       <ant-button type="ghost">M</ant-button>
-       <ant-button type="dashed">R</ant-button>
-     </button-group>
-
-     <h4>With Icon</h4>
-     <button-group>
-       <ant-button type="primary">
-         <icon type="left"></icon>Go back
-       </ant-button>
-       <ant-button type="primary">
-         Go forward<icon type="right"></icon>
-       </ant-button>
-     </button-group>
-     <button-group>
-       <ant-button type="primary" icon="cloud"></ant-button>
-       <ant-button type="primary" icon="cloud-download"></ant-button>
-     </button-group>
-
-     <h4>Size</h4>
-     <button-group size="large">
-       <ant-button type="ghost">Large</ant-button>
-       <ant-button type="ghost">Large</ant-button>
-     </button-group>
-     <button-group>
-       <ant-button type="ghost">Default</ant-button>
-       <ant-button type="ghost">Default</ant-button>
-     </button-group>
-     <button-group size="small">
-       <ant-button type="ghost">Small</ant-button>
-       <ant-button type="ghost">Small</ant-button>
-     </button-group>
-  </form>
-  <!-- <pagination :current="1" :total="100" prefix-cls="ant-pagination"></pagination> -->
+  <div class="app">
+    <div class="example">
+      <spin size="small">
+        <div slot="demo">222</div>
+        <div data-show="true" class="ant-alert ant-alert-info ant-alert-with-description ant-alert-no-icon"><span class="ant-alert-message">消息提示的文案</span><span class="ant-alert-description">消息提示的辅助性文字介绍消息提示的辅助性文字介绍消息提示的辅助性文字介绍</span></div>
+      </spin>
+    </div>
+  </div>
 </template>
 
 <script>
   import '../packages/style';
-  import '../packages/button/style';
+  import '../packages/spin/style';
+  // import '../packages/button/style';
   // import Pagination from 'vue-core-pagination';
 
   export default {
@@ -69,3 +30,5 @@
     }
   };
 </script>
+
+<style></style>
