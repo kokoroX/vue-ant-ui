@@ -1,14 +1,19 @@
 <template lang="html">
-  <div class="ant-spin-nested-loading">
-    <div class="ant-spin ant-spin-spinning" :class="classes">
+  <div :class="{'ant-spin-nested-loading': spinning}" v-if="_slotContents.default">
+    <div class="ant-spin" :class="classes">
       <span class="ant-spin-dot"></span>
       <div class="ant-spin-text">{{tip}}</div>
     </div>
     <div class="ant-spin-container">
       <slot></slot>
     </div>
-    <slot name="demo"></slot>
   </div>
+  <template v-else>
+    <div class="ant-spin ant-spin-spinning" :class="classes">
+      <span class="ant-spin-dot"></span>
+      <div class="ant-spin-text">{{tip}}</div>
+    </div>
+  </template>
 </template>
 
 <script>
@@ -27,24 +32,25 @@
         type: String,
         default: '加载中...'
       },
-      spinning: Boolean
+      spinning: {
+        type: Boolean,
+        default: true
+      }
     },
 
     computed: {
       classes() {
-        var size = this.size;
-        var tip = this.tip;
+        const size = this.size;
+        const tip = this.tip;
+        const spinning = this.spinning;
 
         return {
+          ['ant-spin-spinning']: spinning,
           ['ant-spin-sm']: size === 'small',
           ['ant-spin-lg']: size === 'large',
           ['ant-spin-show-text']: tip !== '加载中...'
         };
       }
-    },
-
-    ready() {
-      console.log(this._slotContents);
     }
   };
 </script>

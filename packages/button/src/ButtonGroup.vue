@@ -6,6 +6,10 @@
 
 <script>
   export default {
-    name: 'button-group'
+    name: 'button-group',
+
+    compiled() {
+      console.log(this.$children);
+    }
   };
 </script>

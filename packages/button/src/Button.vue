@@ -1,10 +1,10 @@
 <template>
   <button :type="htmlType"
     :class="classes">
-    <icon :type="iconType"></icon>
-    <!-- todo slot外面本有一层span -->
-    <!-- <span></span> -->
-    <slot></slot>
+    <icon :type="iconType" v-if="iconType"></icon>
+    <span v-if="_slotContents.default">
+      <slot></slot>
+    </span>
   </button>
 </template>
 

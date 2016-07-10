@@ -399,12 +399,11 @@
   }
 
   &-fixed-header &-body-inner {
-    overflow-y: scroll;
+    overflow: scroll;
   }
 
-  &-fixed-header &-header {
-    overflow-x: scroll;
-    overflow-y: hidden;
+  &-fixed-header &-scroll &-header {
+    overflow: scroll;
     padding-bottom: 20px;
     margin-bottom: -20px;
   }
@@ -420,15 +419,6 @@
     table {
       width: auto;
       background: #fff;
-    }
-  }
-
-  &-fixed-left,
-  &-fixed-right,
-  &-scroll {
-    th,
-    td {
-      white-space: nowrap;
     }
   }
 
