@@ -14,7 +14,7 @@
 
     props: {
       onChange: Function,
-      value: String,
+      value: [String, Number, Boolean],
       disabled: Boolean,
       size: {
         type: String,
@@ -23,11 +23,18 @@
       }
     },
     compiled() {
-      if (this.value) this.select(this.value);
+      if (this.value != null) this.select(this.value);
       if (this.disabled) this.$broadcast('disabled');
+    },
+    watch: {
+      value(value) {
+        if (this.value != null) this.select(this.value);
+        if (this.disabled) this.$broadcast('disabled');
+      }
     },
     methods: {
       select(value) {
+        this.value = value;
         this.$broadcast('selected', value);
         this.onChange && this.onChange(value);
       }

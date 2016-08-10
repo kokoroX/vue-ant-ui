@@ -14,7 +14,7 @@
   import { curryingContains } from '../../_utils';
 
   export default {
-    name: 'switch',
+    name: 'ant-switch',
     props: {
       checked: {
         type: Boolean,

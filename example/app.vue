@@ -1,37 +1,28 @@
 <template>
   <div class="code-box-demo">
     <div :style="{ marginBottom: '16px' }">
-      <ant-button type="primary" @click="start"
-        :disabled="!hasSelected" :loading="loading"
+      <ant-button type="primary" @click="demo"
       >操 作</ant-button>
       <span :style="{ marginLeft: '8px' }">{{hasSelected ? `选择了 ${selectedRowKeys.length} 个对象` : ''}}</span>
     </div>
-    <ant-table :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }" :columns="columns" :data-source="data"></ant-table>
+    <ant-table :columns="columns" :data-source="data" :row-selection="rowSelection" row-key="demo"></ant-table>
   </div>
 </template>
 
 <script>
+  import { contains } from '_utils';
   import '../packages/style';
   import '../packages/table/style';
   import '../packages/pagination/style';
   // import '../packages/button/style';
   // import Pagination from 'vue-core-pagination';
 
-  const columns = [{
-    title: '姓名',
-    dataIndex: 'name'
-  }, {
-    title: '年龄',
-    dataIndex: 'age'
-  }, {
-    title: '住址',
-    dataIndex: 'address'
-  }];
+  // const columns = [];
 
   const data = [];
   for (let i = 0; i < 46; i++) {
     data.push({
-      key: i,
+      demo: i,
       name: `李大嘴${i}`,
       age: 32,
       address: `西湖区湖底公园${i}号`
@@ -39,6 +30,7 @@
   }
   // 通过 rowSelection 对象表明需要行选择
   const rowSelection = {
+    selectedRowKeys: [1, 5],
     onChange(selectedRowKeys, selectedRows) {
       console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
@@ -47,18 +39,51 @@
     },
     onSelectAll(selected, selectedRows, changeRows) {
       console.log(selected, selectedRows, changeRows);
-    }
+    },
+    getCheckboxProps: record => ({
+      disabled: contains([1, 3, 5], record.key)
+    })
   };
 
   export default {
     name: 'app',
     data() {
       return {
-        columns,
+        columns: [
+          {
+            title: '序号',
+            operation: true,
+            width: 200,
+            dataIndex: 'name',
+            render: (value, b, $index) => ({
+              template: '<ant-button :on-click="demo">123</ant-button>',
+              methods: {
+                demo() {
+                  console.log(111);
+                }
+              }
+            })
+          }
+          // {
+          //   title: '姓名',
+          //   dataIndex: 'name'
+          // }, {
+          //   title: '年龄',
+          //   dataIndex: 'age'
+          // }, {
+          //   title: '住址',
+          //   dataIndex: 'address'
+          // }
+        ],
         data,
         rowSelection,
         loading: false,
-        selectedRowKeys: []
+        selectedRowKeys: [],
+        functions: {
+          demo(value, $index) {
+            console.log(value, $index);
+          }
+        }
       };
     },
     computed: {
@@ -67,6 +92,12 @@
       }
     },
     methods: {
+      demo() {
+        this.rowSelection.selectedRowKeys = [1, 9];
+      },
+      tem() {
+        console.log(111);
+      },
       start() {
         this.loading = true;
         // 模拟 ajax 请求，完成后清空

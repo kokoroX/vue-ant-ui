@@ -8,7 +8,7 @@
   export default {
     name: 'ant-col',
     props: {
-      span: Number,
+      span: [Number, String],
       offset: Number,
       push: Number,
       pull: Number,

@@ -13,7 +13,7 @@
 
     <li :title="`向后 ${padding} 页`" :class="[`${prefixCls}-jump-next`]" v-show="(current + padding) < pageCount" @click="jumpTo(current + padding)"><a></a></li>
 
-    <li :title="`最后一页: ${pageCount}`" :class="[`${prefixCls}-item`, {[`${prefixCls}-item-active`]: current === pageCount}]" v-show="pageCount && current !== pageCount" @click="jumpTo(pageCount)"><a>{{pageCount}}</a></li>
+    <li :title="`最后一页: ${pageCount}`" :class="[`${prefixCls}-item`, {[`${prefixCls}-item-active`]: current === pageCount}]" v-show="pageCount > 1 && current <= pageCount" @click="jumpTo(pageCount)"><a>{{pageCount}}</a></li>
 
     <li title="下一页" :class="[`${prefixCls}-next`, {[`${prefixCls}-disabled`]: current >= pageCount}]" @click="jumpTo(current + 1)"><a></a></li>
     <!-- todo select -->
@@ -158,6 +158,9 @@ export default {
   },
   watch: {
     current() {
+      this.updatePages();
+    },
+    pageCount() {
       this.updatePages();
     }
   },

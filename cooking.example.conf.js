@@ -11,7 +11,8 @@ cooking.set({
 
   devServer: {
     port: 8080,
-    hostname: require('my-local-ip')(),
+    // hostname: require('my-local-ip')(),
+    hostname: 'localhost',
     publicPath: '/',
     log: false
   },
@@ -67,7 +68,8 @@ cooking.add('plugin.ExtractText', new ExtractTextPlugin('[name].css'));
 
 cooking.add('resolve.alias', {
   'src': path.join(__dirname, 'src'),
-  'packages': path.join(__dirname, 'packages')
+  'packages': path.join(__dirname, 'packages'),
+  '_utils': path.join(__dirname, 'packages/_utils')
 });
 
 module.exports = cooking.resolve();

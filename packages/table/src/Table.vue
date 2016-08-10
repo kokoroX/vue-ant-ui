@@ -12,11 +12,12 @@
                 <div class="ant-table-body">
                   <table class="">
                     <colgroup>
-                      <col v-for="column in columns">
+                      <col v-if="!isEmptyObject(rowSelection)">
+                      <col v-for="column in columns" :style="{ width: `${column.width}px` }">
                     </colgroup>
                     <thead class="ant-table-thead">
                       <tr class="ant-table-row  ant-table-row-level-0">
-                        <th class="ant-table-selection-column">
+                        <th class="ant-table-selection-column" v-if="!isEmptyObject(rowSelection)">
                           <span>
                             <checkbox :checked="selectedAllRow" :on-change="handleSelectAllRow"></checkbox>
                           </span>
@@ -27,15 +28,20 @@
                       </tr>
                     </thead>
                     <tbody class="ant-table-tbody">
-                      <tr class="ant-table-row  ant-table-row-level-0" v-for="($index, row) in currentPageData">
-                        <td class="ant-table-selection-column">
+                      <tr class="ant-table-row  ant-table-row-level-0" v-for="($rowIndex, row) in currentPageData">
+                        <td class="ant-table-selection-column" v-if="!isEmptyObject(rowSelection)">
                           <span>
-                            <checkbox :checked="selectedRowKeys.indexOf(row.key) >= 0" :on-change="handleSelect(row, $index)"></checkbox>
+                            <checkbox :checked="selectedRowKeys.indexOf(row[rowKey]) >= 0" :disabled="getCheckboxPropsByItem(row).disabled" :on-change="handleSelect(row, $rowIndex)"></checkbox>
                           </span>
                         </td>
-                        <td class="" v-for="($index, column) in columns">
+                        <td class="" v-for="($columnIndex, column) in columns">
                           <span class="ant-table-row-indent indent-level-0" style="padding-left: 0px;"></span>
-                          {{{ column.render ? column.render(row[column.dataIndex], row, $index) : row[column.dataIndex] }}}
+                          <template v-if='column.operation'>
+                            <span v-make="column.render(row[column.dataIndex], row, $rowIndex)"></span>
+                          </template>
+                          <template v-else>
+                            {{{ column.render ? column.render(row[column.dataIndex], row, $rowIndex) : row[column.dataIndex] }}}
+                          </template>
                         </td>
                       </tr>
                     </tbody>
@@ -47,23 +53,28 @@
         </div>
       </div>
     </div>
-    <pagination class="ant-table-pagination" :current="pagination.current" :total="dataSource.length" :on-change="handlePageChange"></pagination>
+    <pagination class="ant-table-pagination" :current="pagination.current" :total="pagination.totalCount" :page-size="pagination.pageSize" :on-change="handlePageChange" v-if="pagination"></pagination>
   </div>
 </template>
 
 <script>
+  import Vue from 'vue';
   import { curryingContains } from '../../_utils';
 
   export default {
     name: 'ant-table',
 
     props: {
-      rowSelection: Object,
-      pagination: {
+      rowSelection: {
         type: Object,
+        default: () => ({})
+      },
+      pagination: {
+        type: [Object, Boolean],
         default: () => ({
           current: 1,
           pageSize: 10,
+          totalCount: 1,
           onChange: () => {},
           onShowSizeChange: () => {}
         })
@@ -180,7 +191,6 @@
           pageSize = this.pagination.pageSize;
           current = this.pagination.current;
         }
-
         if (data.length > pageSize || pageSize === Number.MAX_VALUE) {
           data = data.filter((item, i) => {
             return i >= (current - 1) * pageSize && i < current * pageSize;
@@ -191,7 +201,7 @@
       selectedAllRow() {
         const selectedRowKeys = this.selectedRowKeys;
         const currentPageSelectedRow = this.currentPageData.filter(
-          (row, i) => selectedRowKeys.indexOf(row.key) >= 0
+          (row, i) => selectedRowKeys.indexOf(this.getRecordKey(row)) >= 0
         );
         return currentPageSelectedRow.length === this.pagination.pageSize;
       }
@@ -200,6 +210,26 @@
       this.selectedRowKeys = (this.rowSelection || {}).selectedRowKeys || [];
     },
     methods: {
+      getRecordKey(record, index) {
+        if (this.rowKey) {
+          return typeof this.rowKey === 'function' ? this.rowKey(record, index) : record[this.rowKey];
+        }
+        return record.key || index;
+      },
+      isEmptyObject(obj) {
+        /* eslint-disable no-unused-vars */
+        var o;
+        for (o in obj) return !1;
+        return !0;
+      },
+      getCheckboxPropsByItem(item) {
+        const { rowSelection = {} } = this;
+        if (!rowSelection.getCheckboxProps) {
+          return {};
+        }
+        // const key = this.getRecordKey(item);
+        return rowSelection.getCheckboxProps(item);
+      },
       handleSelect(record, rowIndex) {
         return (e) => {
           const checked = e.target.checked;
@@ -207,33 +237,36 @@
           const selectedRowKeys = this.selectedRowKeys;
 
           if (checked) {
-            selectedRowKeys.push(record.key);
+            selectedRowKeys.push(this.getRecordKey(record));
           } else {
-            selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
+            selectedRowKeys.splice(selectedRowKeys.indexOf(this.getRecordKey(record)), 1);
           }
 
           if (!this.rowSelection.onSelect) return false;
           let selectedRows = data.filter((row, i) => {
-            return selectedRowKeys.indexOf(row.key) >= 0;
+            return selectedRowKeys.indexOf(this.getRecordKey(record)) >= 0;
           });
           this.rowSelection.onSelect(record, checked, selectedRows);
         };
       },
       handleSelectAllRow(e) {
         const checked = e.target.checked;
-        const data = this.currentPageData;
+        const data = this.dataSource;
         const selectedRowKeys = this.selectedRowKeys;
+        const changableRowKeys = data
+          .filter(item => !this.getCheckboxPropsByItem(item).disabled)
+          .map(item => this.getRecordKey(item));
 
         const changeRowKeys = [];
         if (checked) {
-          data.map(item => item.key).forEach(key => {
+          changableRowKeys.forEach(key => {
             if (selectedRowKeys.indexOf(key) < 0) {
               selectedRowKeys.push(key);
               changeRowKeys.push(key);
             }
           });
         } else {
-          data.map(item => item.key).forEach(key => {
+          changableRowKeys.forEach(key => {
             if (selectedRowKeys.indexOf(key) >= 0) {
               selectedRowKeys.splice(selectedRowKeys.indexOf(key), 1);
               changeRowKeys.push(key);
@@ -241,17 +274,42 @@
           });
         }
         if (this.rowSelection.onSelectAll) {
-          const selectedRows = data.filter((row, i) =>
+          const selectedRows = changableRowKeys.filter((row, i) =>
             selectedRowKeys.indexOf(row.key) >= 0);
-          const changeRows = data.filter((row, i) =>
+          const changeRows = changableRowKeys.filter((row, i) =>
             changeRowKeys.indexOf(row.key) >= 0);
           this.rowSelection.onSelectAll(checked, selectedRows, changeRows);
         }
       },
       handlePageChange(current) {
         let pagination = this.pagination;
-        pagination.current = current;
-        pagination.onChange(pagination.current);
+        if (pagination.onChange) {
+          const fnCallback = pagination.onChange(current);
+          if (fnCallback.then) {
+            fnCallback
+            .then(() => {
+              pagination.current = current;
+            });
+          }
+        } else {
+          pagination.current = current;
+          pagination.onChange && pagination.onChange(pagination.current);
+        }
+      }
+    },
+    directives: {
+      make: {
+        update: function(value) {
+          let options = {};
+          if (typeof value === 'string') {
+            options.template = value;
+          } else {
+            options = value;
+          }
+          const Temp = Vue.extend(options);
+          const instance = new Temp();
+          instance.$mount().$appendTo(this.el);
+        }
       }
     }
   };

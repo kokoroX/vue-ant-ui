@@ -80,22 +80,29 @@ input[type="checkbox"] {
     margin-bottom: @form-item-margin-bottom - @font-size-base * @line-height-base - 3;
   }
 
-  > label {
-    color: @label-color;
+  &-label {
     text-align: right;
     vertical-align: middle;
     padding: 7px 0;
 
-    &:after {
-      content: ":";
-      margin: 0 8px 0 2px;
-      position: relative;
-      top: -0.5px;
+    label {
+      color: @label-color;
+
+      &:after {
+        content: ":";
+        margin: 0 8px 0 2px;
+        position: relative;
+        top: -0.5px;
+      }
     }
   }
 
   .ant-switch {
     margin: 4px 0;
+  }
+
+  &.@{form-prefix-cls}-no-colon > label:after {
+    content: " ";
   }
 }
 
@@ -159,6 +166,11 @@ form {
   .ant-checkbox-vertical,
   .ant-radio-vertical {
     display: block;
+  }
+
+  .ant-checkbox-vertical + .ant-checkbox-vertical,
+  .ant-radio-vertical + .ant-radio-vertical {
+    margin-left: 0;
   }
 
   .ant-input-number {
@@ -228,11 +240,6 @@ form {
     }
   }
 
-  .ant-input {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
   .@{form-prefix-cls}-text {
     display: inline-block;
   }
@@ -269,7 +276,7 @@ form {
     visibility: visible;
     font-family: "anticon" !important;
     .square(@input-height-lg);
-    line-height: @input-height-lg + 2;
+    line-height: @input-height-lg;
     text-align: center;
     font-size: 14px;
     animation: zoomIn .3s @ease-out-back;

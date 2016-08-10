@@ -27,7 +27,7 @@
         default: false
       },
       disabled: Boolean,
-      value: String
+      value: [String, Number, Boolean]
     },
     methods: {
       toggle() {

@@ -4,9 +4,10 @@
   "description": "Ant Design components for Vue",
   "private": false,
   "keywords": [],
+  "main": "lib/index.js",
   "scripts": {
     "dev": "cooking watch -c cooking.example.conf.js",
-    "dist": "cooking build -p",
+    "dist": "cooking build -p && mv lib/index/* lib/ && rm -rf lib/index",
     "deploy": "cooking build --no-color"
   },
   "repository": {

@@ -1,0 +1,5 @@
+{
+  "index": ["./src/index.js"],
+  "button": ["./packages/button/button.index.js"],
+  "button-group": ["./packages/button/button.group.index.js"]
+}

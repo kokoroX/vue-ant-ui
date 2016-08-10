@@ -43,6 +43,7 @@
       }
     },
     compiled() {
+      if (!this.gutter) return;
       this.$children.map(children => {
         children.$el.style.paddingLeft = `${this.gutter / 2}px`;
         children.$el.style.paddingRight = `${this.gutter / 2}px`;

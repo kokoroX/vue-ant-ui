@@ -38,7 +38,7 @@
         type: Boolean,
         default: false
       },
-      value: String
+      value: [String, Number, Boolean]
     },
     methods: {
       toggle() {

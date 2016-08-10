@@ -3,7 +3,7 @@
     <span class="ant-checkbox"
       :class="[{ 'ant-checkbox-checked': checked, 'ant-checkbox-disabled': disabled }]">
       <span class="ant-checkbox-inner"></span>
-      <input type="checkbox" class="ant-checkbox-input" value="on" name="" :checked="checked" @change="toggle">
+      <input type="checkbox" class="ant-checkbox-input" :checked="checked" @change="toggle">
     </span>
     <span v-if="_slotContents && _slotContents.default">
       <slot></slot>
@@ -15,6 +15,7 @@
   export default {
     name: 'checkbox',
     props: {
+      defaultChecked: Boolean,
       checked: {
         type: Boolean,
         default: false
@@ -30,6 +31,12 @@
         if (this.disabled) return false;
         this.checked = !this.checked;
         this.onChange && this.onChange(e);
+      }
+    },
+    created() {
+      const { defaultChecked } = this;
+      if (typeof defaultChecked === 'boolean') {
+        this.checked = defaultChecked;
       }
     }
   };

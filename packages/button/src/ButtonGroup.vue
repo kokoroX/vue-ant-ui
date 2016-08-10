@@ -6,10 +6,6 @@
 
 <script>
   export default {
-    name: 'button-group',
-
-    compiled() {
-      console.log(this.$children);
-    }
+    name: 'ant-button-group'
   };
 </script>
