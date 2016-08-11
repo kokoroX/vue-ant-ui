@@ -26,6 +26,7 @@
 - input-number
 - progress (line与circle下的strokeWidth默认值都为10)
 - table (只有基础功能,未完善)
+- message
 
 # 使用方法
 ```

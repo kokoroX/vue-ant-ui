@@ -33,8 +33,19 @@ export default {
       if (!this.tooltipEl) {
         this.createTooltip(e);
       }
-      this.tooltipEl.top = e.target.offsetTop;
-      this.tooltipEl.left = e.target.offsetLeft;
+      if (this.tooltipEl.visible) return;
+      const elTrigger = this.tooltipEl.$els.trigger;
+      const triggerWidth = elTrigger.offsetWidth;
+      const triggerHeight = elTrigger.offsetHeight;
+      console.log(this.tooltipEl.$els.trigger.offsetWidth);
+      this.tooltipEl.top = e.currentTarget.offsetTop - triggerHeight;
+      this.tooltipEl.left = e.currentTarget.offsetLeft + e.currentTarget.offsetWidth / 2 - triggerWidth / 2;
+      this.tooltipEl.visible = true;
+    },
+    hideTooltip(e) {
+      if (!this.tooltipEl) return;
+      if (!this.tooltipEl.visible) return;
+      this.tooltipEl.visible = false;
     }
   }
 };

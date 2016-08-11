@@ -1,11 +1,11 @@
 <template lang="html">
   <div>
-    <div data-reactroot="">
-      <div class="ant-tooltip" :class="classes" style="transform-origin: 47px 51px 0px;" :style="{top: `${top}px`, left: `${left}px`}">
+    <div>
+      <div v-el:trigger class="ant-tooltip" :class="classes" style="transform-origin: 47px 51px 0px;" :style="{top: `${top}px`, left: `${left}px`}">
         <div class="ant-tooltip-content">
           <div class="ant-tooltip-arrow"></div>
           <div class="ant-tooltip-inner">
-            <span>{{title}}</span>
+            <span>123421421</span>
           </div>
         </div>
       </div>
@@ -22,7 +22,10 @@ export default {
       validator: curryingContains(['top', 'left', 'right', 'bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight', 'leftTop', 'leftBottom', 'rightTop', 'rightBottom', undefined]),
       default: 'top'
     },
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      default: false
+    },
     top: Number,
     left: Number
   },

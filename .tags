@@ -130,3 +130,11 @@ td&-column-has-prev	/Users/xujiadong/Desktop/vue-ant-ui/packages/table/style/ind
 &:before	/Users/xujiadong/Desktop/vue-ant-ui/packages/table/style/index.less	/^    &:before {$/;"	function	line:506
 &-next-columns-page	/Users/xujiadong/Desktop/vue-ant-ui/packages/table/style/index.less	/^  &-next-columns-page {$/;"	function	line:514
 &:before	/Users/xujiadong/Desktop/vue-ant-ui/packages/table/style/index.less	/^    &:before {$/;"	function	line:517
+install	/Users/xujiadong/Desktop/vue-ant-ui/src/index.js	/^  install(Vue) {$/;"	function	line:21
+notice	/Users/xujiadong/Desktop/vue-ant-ui/packages/message/message.js	/^    notice(noticeProps) {$/;"	function	line:19
+removeOnce	/Users/xujiadong/Desktop/vue-ant-ui/packages/message/message.js	/^    removeOnce(key) {$/;"	function	line:22
+destory	/Users/xujiadong/Desktop/vue-ant-ui/packages/message/message.js	/^    destory() {$/;"	function	line:26
+getMessageInstance	/Users/xujiadong/Desktop/vue-ant-ui/packages/message/index.js	/^function getMessageInstance() {$/;"	function	line:9
+getMessageInstance	/Users/xujiadong/Desktop/vue-ant-ui/packages/message/index.js	/^function getMessageInstance() {$/;"	function	line:9
+notice	/Users/xujiadong/Desktop/vue-ant-ui/packages/message/index.js	/^function notice(content, duration = configDuration, type) {$/;"	function	line:18
+notice	/Users/xujiadong/Desktop/vue-ant-ui/packages/message/index.js	/^function notice(content, duration = configDuration, type) {$/;"	function	line:18

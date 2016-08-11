@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from './tooltip';
+import App from './message';
 import Ant from 'src';
 
 Vue.use(Ant);
