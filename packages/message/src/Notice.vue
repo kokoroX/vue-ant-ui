@@ -53,7 +53,7 @@ export default {
     this.clearTimer();
     if (!this.duration) return;
     this.outTimer = setTimeout(() => {
-      this.close();
+      this._close();
     }, this.duration * MS);
   },
   methods: {
@@ -61,9 +61,13 @@ export default {
       clearTimeout(this.outTimer);
       this.outTimer = null;
     },
-    close() {
+    _close() {
       this.clearTimer();
-      this.visible = false;
+      if (this.onClose) {
+        this.onClose();
+      } else {
+        this.visible = false;
+      }
     }
   },
   beforeDestory() {

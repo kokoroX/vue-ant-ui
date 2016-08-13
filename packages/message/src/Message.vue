@@ -35,9 +35,8 @@ export default {
       this.notices = notices.concat(_notice);
     },
     remove(key) {
-      this.notices.forEach(notice => {
-        if (notice.key === key) notice.visible = false;
-      });
+      const { notices } = this;
+      this.notices = notices.filter(notice => notice.key !== key);
     }
   }
 };
