@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'icon',
+    name: 'ant-icon',
     props: {
       type: {
         type: String

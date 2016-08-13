@@ -20,7 +20,7 @@
   import { curryingContains } from '../../_utils';
 
   export default {
-    name: 'spin',
+    name: 'ant-spin',
 
     props: {
       size: {

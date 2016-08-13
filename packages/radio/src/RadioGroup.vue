@@ -10,7 +10,7 @@
 <script>
   import { curryingContains } from '../../_utils';
   export default {
-    name: 'radioGroup',
+    name: 'ant-radio-group',
 
     props: {
       onChange: Function,

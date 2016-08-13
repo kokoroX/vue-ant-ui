@@ -27,6 +27,7 @@
 - progress (line与circle下的strokeWidth默认值都为10)
 - table (只有基础功能,未完善)
 - message
+- notification (自定义按钮未实现)
 
 # 使用方法
 ```

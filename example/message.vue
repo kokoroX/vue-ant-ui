@@ -44,7 +44,7 @@ export default {
     Message.config({
       top: 100,
       duration: 5
-    })
+    });
   }
 };
 </script>

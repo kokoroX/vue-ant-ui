@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    name: 'checkbox',
+    name: 'ant-checkbox',
     props: {
       defaultChecked: Boolean,
       checked: {

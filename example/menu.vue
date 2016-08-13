@@ -7,7 +7,7 @@
      >
        <sub-menu key="sub1">
          <template slot="title">
-           <span><icon type="mail"></icon><span>导航一</span></span>
+           <span><ant-icon type="mail"></ant-icon><span>导航一</span></span>
          </template>
          <menu-item-group title="分组1">
            <menu-item key="1">选项1</menu-item>
@@ -20,7 +20,7 @@
        </sub-menu>
        <sub-menu key="sub2">
          <template slot="title">
-           <span><icon type="appstore"></icon><span>导航二</span></span>
+           <span><ant-icon type="appstore"></ant-icon><span>导航二</span></span>
          </template>
          <menu-item key="5">选项5</menu-item>
          <menu-item key="6">选项6</menu-item>
@@ -34,7 +34,7 @@
        </sub-menu>
        <sub-menu key="sub4" title={}>
          <template slot="title">
-           <span><icon type="setting"></icon><span>导航三</span></span>
+           <span><ant-icon type="setting"></ant-icon><span>导航三</span></span>
          </template>
          <menu-item key="9">选项9</menu-item>
          <menu-item key="10">选项10</menu-item>

@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    name: 'radioButton',
+    name: 'ant-radio-button',
 
     props: {
       prefixCls: {

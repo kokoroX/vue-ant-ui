@@ -53,7 +53,7 @@
         </div>
       </div>
     </div>
-    <pagination class="ant-table-pagination" :current="pagination.current" :total="pagination.totalCount" :page-size="pagination.pageSize" :on-change="handlePageChange" v-if="pagination"></pagination>
+    <ant-pagination class="ant-table-pagination" :current="pagination.current" :total="pagination.totalCount" :page-size="pagination.pageSize" :on-change="handlePageChange" v-if="pagination"></ant-pagination>
   </div>
 </template>
 

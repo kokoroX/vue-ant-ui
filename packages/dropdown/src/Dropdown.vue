@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'dropdown',
+    name: 'ant-dropdown',
     props: {
       trigger: String
     }

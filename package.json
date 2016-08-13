@@ -21,6 +21,11 @@
   "author": "kokoro",
   "license": "MIT",
   "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "normalize.css": "^4.2.0",
+    "uppercamelcase": "^1.1.0",
     "vue": "^1.0.0"
   },
   "devDependencies": {

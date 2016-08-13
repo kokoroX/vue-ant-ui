@@ -12,7 +12,7 @@
   import { contains } from '_utils';
 
   export default {
-    name: 'menu-item',
+    name: 'ant-menu-item',
     props: {
       disabled: {
         type: Boolean,

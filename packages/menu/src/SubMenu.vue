@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    name: 'sub-menu',
+    name: 'ant-sub-menu',
     data() {
       return {
         active: false,

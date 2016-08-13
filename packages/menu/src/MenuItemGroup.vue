@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: 'menu-item-group',
+    name: 'ant-menu-item-group',
     props: {
       title: String
     }

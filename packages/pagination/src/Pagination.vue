@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'pagination',
+  name: 'ant-pagination',
   props: {
     // nowPage: Number,
     // pageCount: Number,

@@ -51,7 +51,7 @@ Message.destory = () => {
 };
 Message.config = (options) => {
   configTop = options.top || configTop;
-  configDuration = options.duration || configDuration
-}
+  configDuration = options.duration || configDuration;
+};
 
 module.exports = Message;
