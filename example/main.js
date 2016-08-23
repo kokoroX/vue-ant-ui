@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import App from './notification';
+import App from './form';
 import Ant from 'src';
 
 Vue.use(Ant);

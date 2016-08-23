@@ -16,6 +16,7 @@
       onChange: Function,
       value: [String, Number, Boolean],
       disabled: Boolean,
+      defaultValue: [String, Number, Boolean],
       size: {
         type: String,
         default: 'default',
@@ -23,6 +24,7 @@
       }
     },
     compiled() {
+      if (this.defaultValue != null) this.select(this.defaultValue);
       if (this.value != null) this.select(this.value);
       if (this.disabled) this.$broadcast('disabled');
     },

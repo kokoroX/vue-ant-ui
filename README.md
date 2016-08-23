@@ -28,6 +28,8 @@
 - table (只有基础功能,未完善)
 - message
 - notification (自定义按钮未实现)
+- tooltip
+- form (完成基本功能 表单验证未做)
 
 # 使用方法
 ```

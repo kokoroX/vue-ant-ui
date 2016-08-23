@@ -1,13 +1,11 @@
 <template lang="html">
-  <div>
-    <div>
-      <div v-el:trigger class="ant-tooltip" :class="classes" style="transform-origin: 47px 51px 0px;" :style="{top: `${top}px`, left: `${left}px`}">
-        <div class="ant-tooltip-content">
-          <div class="ant-tooltip-arrow"></div>
-          <div class="ant-tooltip-inner">
-            <span>123421421</span>
-          </div>
-        </div>
+  <div v-el:trigger class="ant-tooltip" :class="classes" :style="styles" v-if="visible">
+    <div class="ant-tooltip-content">
+      <div class="ant-tooltip-arrow"></div>
+      <div class="ant-tooltip-inner">
+        <span>
+          <slot></slot>
+        </span>
       </div>
     </div>
   </div>
@@ -24,17 +22,15 @@ export default {
     },
     visible: {
       type: Boolean,
-      default: false
+      default: true
     },
-    top: Number,
-    left: Number
+    styles: Object
   },
   computed: {
     classes() {
-      const { placement, visible } = this;
+      const { placement } = this;
       return {
-        [`ant-tooltip-placement-${placement}`]: placement,
-        'ant-tooltip-hidden': !visible
+        [`ant-tooltip-placement-${placement}`]: placement
       };
     }
   }

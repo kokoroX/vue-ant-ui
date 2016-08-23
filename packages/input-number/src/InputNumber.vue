@@ -33,7 +33,12 @@
       },
       onChange: Function,
       disabled: Boolean,
-      size: String
+      size: String,
+      defaultValue: Number
+    },
+    compiled() {
+      if (this.value) return;
+      if (this.defaultValue) this.value = this.defaultValue;
     },
     computed: {
       classes() {

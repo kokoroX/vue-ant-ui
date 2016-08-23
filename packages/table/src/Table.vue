@@ -19,7 +19,7 @@
                       <tr class="ant-table-row  ant-table-row-level-0">
                         <th class="ant-table-selection-column" v-if="!isEmptyObject(rowSelection)">
                           <span>
-                            <checkbox :checked="selectedAllRow" :on-change="handleSelectAllRow"></checkbox>
+                            <ant-checkbox :checked="selectedAllRow" :on-change="handleSelectAllRow"></ant-checkbox>
                           </span>
                         </th>
                         <th class="" v-for="column in columns">
@@ -31,7 +31,7 @@
                       <tr class="ant-table-row  ant-table-row-level-0" v-for="($rowIndex, row) in currentPageData">
                         <td class="ant-table-selection-column" v-if="!isEmptyObject(rowSelection)">
                           <span>
-                            <checkbox :checked="selectedRowKeys.indexOf(row[rowKey]) >= 0" :disabled="getCheckboxPropsByItem(row).disabled" :on-change="handleSelect(row, $rowIndex)"></checkbox>
+                            <ant-checkbox :checked="selectedRowKeys.indexOf(row[rowKey]) >= 0" :disabled="getCheckboxPropsByItem(row).disabled" :on-change="handleSelect(row, $rowIndex)"></ant-checkbox>
                           </span>
                         </td>
                         <td class="" v-for="($columnIndex, column) in columns">

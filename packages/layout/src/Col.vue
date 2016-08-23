@@ -26,7 +26,7 @@
         ['xs', 'sm', 'md', 'lg'].forEach(size => {
           let sizeProps = {};
           if (typeof this[size] === 'number') {
-            sizeProps.span = this.size;
+            sizeProps.span = this[size];
           } else {
             sizeProps = this[size] || {};
           }

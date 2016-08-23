@@ -1,7 +1,8 @@
 <template lang="html">
-  <span class="ant-input-wrapper" :class="{ 'ant-input-group': _slotContents }">
+  <span class="ant-input-wrapper" :class="{ 'ant-input-group': _slotContents || addonBefore || addonAfter }">
     <!-- 前缀 -->
-    <span class="ant-input-group-addon" v-if="_slotContents && _slotContents.addonBefore">
+    <span class="ant-input-group-addon" v-if="addonBefore || (_slotContents && _slotContents.addonBefore)">
+      {{{addonBefore}}}
       <slot name="addonBefore"></slot>
     </span>
 
@@ -30,7 +31,8 @@
         @blur="handleBlur">
     </template>
     <!-- 后缀 -->
-    <span class="ant-input-group-addon" v-if="_slotContents && _slotContents.addonAfter">
+    <span class="ant-input-group-addon" v-if="addonAfter || (_slotContents && _slotContents.addonAfter)">
+      {{{addonAfter}}}
       <slot name="addonAfter"></slot>
     </span>
   </span>
@@ -42,7 +44,7 @@
     name: 'ant-input',
     props: {
       rows: {
-        type: Number,
+        type: [Number, String],
         default: 4
       },
       type: {
@@ -68,7 +70,14 @@
         type: [Boolean, Object],
         default: false
       },
-      placeholder: [String, Number, Boolean]
+      placeholder: [String, Number, Boolean],
+      addonBefore: true,
+      addonAfter: true,
+      defaultValue: true
+    },
+    compiled() {
+      if (this.value) return;
+      if (this.defaultValue) this.value = this.defaultValue;
     },
     computed: {
       classes() {
