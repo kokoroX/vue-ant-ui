@@ -1,9 +1,0 @@
-top: translate(-50%,-100%);
-left: translate(-100%,-50%);
-bottom: translate(-50%,0%);
-right: translate(0%,-50%);
-
-top: 0.5, 0
-left: 0, 0.5
-bottom: 0.5, 1
-right: 1, 0.5
