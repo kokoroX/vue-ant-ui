@@ -1,0 +1,43 @@
+{
+  "name": "vue-ant-ui",
+  "version": "0.0.1",
+  "description": "Ant Design components for Vue",
+  "private": false,
+  "keywords": [],
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "cooking watch -c cooking.example.conf.js",
+    "dist": "cooking build -p && mv lib/index/* lib/ && rm -rf lib/index",
+    "deploy": "cooking build --no-color"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kokoroX/vue-ant-ui"
+  },
+  "homepage": "https://github.com/kokoroX/vue-ant-ui#readme",
+  "bugs": {
+    "url": "https://github.com/kokoroX/vue-ant-ui/issues"
+  },
+  "author": "kokoro",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "normalize.css": "^4.2.0",
+    "uppercamelcase": "^1.1.0",
+    "vue": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "eslint": "^2.13.1",
+    "eslint-config-elemefe": "^0.1.1",
+    "eslint-plugin-vue": "^0.1.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "my-local-ip": "^1.0.0",
+    "normalize.css": "^4.1.1",
+    "uppercamelcase": "^1.1.0",
+    "vue-core-pagination": "0.0.2"
+  }
+}
