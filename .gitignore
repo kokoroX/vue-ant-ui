@@ -1,8 +1,9 @@
-*.log*
-.cache
 .DS_Store
-.idea
-build
-dist
-lib
-node_modules
+node_modules/
+dist/
+npm-debug.log
+selenium-debug.log
+test/unit/coverage
+test/e2e/reports
+.tags
+.tags1

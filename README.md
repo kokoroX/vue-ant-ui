@@ -40,6 +40,3 @@ Vue.use(AntUI)
 example中有部分小例子
 后续持续更新
 另外 看到[FE-Driver的Vue版ant-design实现](https://github.com/FE-Driver/vue-beauty)这个实现也蛮不错的 有几个组件写法比我好很多 后续可能会参考一部分进行组件优化
-
-# 相关
-若有同学能有时间经历来帮忙的 很欢迎联系我 8462304@qq.com 邮箱
