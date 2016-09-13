@@ -1,16 +1,18 @@
 {
   "name": "vue-ant-ui",
-  "version": "1.0.0",
+  "version": "0.0.6",
   "description": "Ant Design components for Vue",
   "author": "kokoro <8462304@qq.com>",
-  "private": true,
+  "private": false,
+  "main": "lib/index.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "bundle": "webpack --progress --hide-modules --config  ./build/webpack.bundle.conf.js && webpack --progress --hide-modules --config  ./build/webpack.bundle.conf.js"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",

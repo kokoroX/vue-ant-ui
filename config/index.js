@@ -3,8 +3,11 @@ var path = require('path')
 
 module.exports = {
   bundle: {
+    env: require('./bundle.env'),
     assetsRoot: path.resolve(__dirname, '../lib'),
-    assetsPublicPath: '/'
+    assetsSubDirectory: '/',
+    assetsPublicPath: '/',
+    productionSourceMap: true
   },
   build: {
     env: require('./prod.env'),
