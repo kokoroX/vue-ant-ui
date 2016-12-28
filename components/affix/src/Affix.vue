@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { getScroll, getOffset } from '../../_utils';
+import { getScroll, getOffset } from '_utils';
 
 export default {
   name: 'ant-affix',

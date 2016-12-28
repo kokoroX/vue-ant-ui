@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { getScroll } from '../../_utils';
+import { getScroll } from '_utils';
 export default {
   name: 'ant-back-top',
   props: {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { contains } from '../../_utils';
+  import { contains } from '_utils';
   export default {
     name: 'ant-collapse',
     props: {

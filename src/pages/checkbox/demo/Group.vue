@@ -2,7 +2,7 @@
   <div>
     <code-box id="components-checkbox-demo-group" title="Checkbox 组" :code="code" :description="description">
       <div slot="instance">
-        <ant-checkbox-group :options="plainOptions" :value="['Apple']" :on-change="onChange"></ant-checkbox-group>
+        <ant-checkbox-group :options="plainOptions" :default-value="['Apple']" :on-change="onChange"></ant-checkbox-group>
         <br />
         <ant-checkbox-group :options="options" :default-value="['Pear']" :on-change="onChange"></ant-checkbox-group>
         <br />
