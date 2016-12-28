@@ -116,6 +116,10 @@ export default function (router) {
         '/table': {
           name: 'table',
           component: require('./pages/table')
+        },
+        '/tabs': {
+          name: 'tabs',
+          component: require('./pages/tabs')
         }
       }
     }

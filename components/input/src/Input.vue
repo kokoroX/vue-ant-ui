@@ -8,6 +8,7 @@
 
     <template v-if="type === 'textarea'">
       <textarea class="ant-input"
+        v-el:input
         :rows="rows"
         :id="id"
         :class="classes"
@@ -15,20 +16,21 @@
         :placeholder="placeholder"
         :style="styles"
         v-model="value"
-        @keyup="handleChange"
+        @input="handleChange"
         @focus="handleFocus"
         @blur="handleBlur"></textarea>
     </template>
 
     <template v-else>
       <input :type="type" class="ant-input"
+        v-el:input
         :id="id"
         :class="classes"
         :disabled="disabled"
         :placeholder="placeholder"
         :style="styles"
         v-model="value"
-        @keyup="handleChange"
+        @input="handleChange"
         @focus="handleFocus"
         @blur="handleBlur">
     </template>
@@ -41,7 +43,7 @@
 </template>
 
 <script>
-  import { curryingContains } from '_utils';
+  import { curryingContains } from '../../_utils';
   export default {
     name: 'ant-input',
     props: {
@@ -107,6 +109,9 @@
       handleBlur(e) {
         if (this.disabled) return false;
         this.onBlur && this.onBlur(e);
+      },
+      focus() {
+        this.$els.input.focus()
       }
     }
   };

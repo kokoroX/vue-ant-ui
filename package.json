@@ -1,10 +1,10 @@
 {
   "name": "vue-ant-ui",
-  "version": "0.0.6",
+  "version": "0.0.10",
   "description": "Ant Design components for Vue",
   "author": "kokoro <8462304@qq.com>",
   "private": false,
-  "main": "lib/index.js",
+  "main": "lib/vue-ant-ui.min.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
@@ -83,5 +83,7 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
     "webpack-merge": "^0.8.3"
-  }
+  },
+  "repository": "https://github.com/kokoroX/vue-ant-ui.git",
+  "license": "MIT"
 }

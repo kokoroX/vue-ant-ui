@@ -32,12 +32,6 @@
         this.checked = !this.checked;
         this.onChange && this.onChange(e);
       }
-    },
-    created() {
-      const { defaultChecked } = this;
-      if (typeof defaultChecked === 'boolean') {
-        this.checked = defaultChecked;
-      }
     }
   };
 </script>

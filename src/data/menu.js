@@ -171,6 +171,12 @@ export default [
         link: {
           name: 'progress'
         }
+      }, {
+        key: 26,
+        name: 'Tabs 标签页',
+        link: {
+          name: 'tabs'
+        }
       }
     ]
   }, {

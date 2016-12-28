@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { contains } from '_utils';
+  import { contains } from '../../_utils';
   export default {
     name: 'ant-collapse',
     props: {
@@ -25,7 +25,6 @@
         this.select(this.activeKey);
         return;
       }
-      console.log(this.defaultActiveKey)
       if (this.defaultActiveKey && this.defaultActiveKey.length) this.select(this.defaultActiveKey);
     },
     methods: {

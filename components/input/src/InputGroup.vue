@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { curryingContains } from '_utils';
+  import { curryingContains } from '../../_utils';
   export default {
     name: 'ant-input-group',
     props: {
@@ -27,5 +27,3 @@
   };
 </script>
 
-<style lang="css">
-</style>

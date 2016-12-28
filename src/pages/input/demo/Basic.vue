@@ -2,7 +2,7 @@
   <div>
     <code-box id="components-input-demo-basic" title="基本使用" :code="code" :description="description">
       <div slot="instance">
-        <ant-input placeholder="基本使用"></ant-input>
+        <ant-input v-ref:input placeholder="基本使用"></ant-input>
       </div>
     </code-box>
   </div>
@@ -19,6 +19,9 @@ export default {
         <ant-input placeholder="基本使用"></ant-input>
       </div>
     `
-  })
+  }),
+  ready () {
+    this.$refs.input.focus()
+  }
 }
 </script>

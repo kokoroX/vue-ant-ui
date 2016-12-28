@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import configRouter from './routes'
-import VueAntUI from '../lib/vue-ant-ui.min'
+import VueAntUI from '../components'
 import './sass/site/style'
 import './sass/highlight.scss'
 

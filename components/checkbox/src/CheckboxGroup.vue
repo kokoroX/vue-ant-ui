@@ -3,7 +3,7 @@
     <checkbox class="ant-checkbox-group-item" v-for="option in options"
       :disabled="typeof option.disabled === 'boolean' ? option.disabled : disabled"
       :checked="value.indexOf(option.value) !== -1"
-      :on-change="() => { toggleOption(option) }">{{ option.label }}</checkbox>
+      :on-change="() => { toggleOption(option) }"> {{option.label}} </checkbox>
   </div>
 </template>
 
